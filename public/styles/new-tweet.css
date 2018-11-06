@@ -1,26 +1,28 @@
 .new-tweet {
+    position: relative;
     background-color: #eee;
     border: 1px solid gray;
-    border-radius: 10px;
+    border-radius: 0.5em;
     padding: 1em;
+    margin: 1em;
 }
 
 .new-tweet h2 {
-    border-bottom: 1px solid black;
+    border-bottom: 0.1em solid black;
 }
 
 .new-tweet textarea {
-    width: 415px;
+    width: 100%;
     padding: 5px;
-    /* margin: 1em; */
 }
 
-/* .new-tweet input {
-    margin: 0 0 1em 1em;
-} */
+.new-tweet input {
+    position: relative;
+    margin-bottom: 1em;
+}
 
 .new-tweet .counter {
-    margin: 1em;
-    right: 0;
+    position: relative;
+    margin-bottom: 1em;
     float: right;
 }
