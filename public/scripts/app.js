@@ -94,10 +94,11 @@ function createTweetFooter(timeCreated) {
 }
 
 $(() => {
+  const $newTweetSection = $('section.new-tweet');
+  const $textInput = $newTweetSection.find('[name=text]');
   $('#tweet-form').submit(function(event) {
     event.preventDefault();
     const tweetData = $(this).serialize();
-    const textInput = $(this).find('[name=text]');
 
     if(textInput.val() && textInput.val().length <= 140) {
       $.post('/tweets/', tweetData, () => loadTweets());
@@ -110,6 +111,10 @@ $(() => {
   function loadTweets() {
     $.get('/tweets/', (data) => renderTweets(data.reverse()));
   }
+
+  $('#nav-bar .compose').on('click', function() {
+    $newTweetSection.slideToggle(() => $textInput.focus());
+  });
+
   loadTweets();
 })
-
