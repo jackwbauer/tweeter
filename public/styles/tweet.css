@@ -3,6 +3,7 @@
     background-color: #FFF;
     border: 1px solid lightgrey;
     border-radius: 0.5em;
+    overflow: hidden;
     margin: 1em;
     opacity: 0.7;
 }
@@ -37,8 +38,6 @@
 }
 
 .tweet header {
-    border-top-right-radius: 0.5em;
-    border-top-left-radius: 0.5em;
     background-color: #eee;
 }
 
