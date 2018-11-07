@@ -44,7 +44,7 @@
 .tweet div {
     vertical-align: middle;
     height: 100px;
-    padding: 0.5em;
+    margin: 0.5em;
 }
 
 .tweet footer {
@@ -55,6 +55,10 @@
 
 .tweet .hover {
     border: 2px solid #000
+}
+
+.tweet p {
+    word-break: break-all
 }
 
 .tweet i {

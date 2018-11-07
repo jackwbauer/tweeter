@@ -93,15 +93,19 @@ function createTweetFooter(timeCreated) {
   return $footer;
 }
 
-// $(() => {
-// renderTweets(data);
-// })
-
 $(() => {
   $('#tweet-form').submit(function(event) {
     event.preventDefault();
     const tweetData = $(this).serialize();
-    $.post('/tweets/', tweetData, () => loadTweets());
+    const textInput = $(this).find('[name=text]');
+
+    if(textInput.val() && textInput.val().length <= 140) {
+      $.post('/tweets/', tweetData, () => loadTweets());
+      textInput.val('');
+      $(this).find('.counter').text(140);
+    } else {
+      alert(textInput ? 'Too many characters!' : 'Nothing to tweet!');
+    }
   });
   function loadTweets() {
     $.get('/tweets/', (data) => renderTweets(data.reverse()));
