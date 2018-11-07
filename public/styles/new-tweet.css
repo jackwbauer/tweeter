@@ -9,6 +9,7 @@
 
 .new-tweet h2 {
     border-bottom: 0.1em solid black;
+    margin-top: 0;
 }
 
 .new-tweet textarea {
@@ -19,12 +20,10 @@
 }
 
 .new-tweet input {
-    position: relative;
     margin-bottom: 1em;
 }
 
 .new-tweet .counter {
-    position: relative;
     margin-bottom: 1em;
     float: right;
 }

@@ -52,7 +52,7 @@ const data = [
   ];
   
   function renderTweets(tweets) {
-      const $tweetContainer = $('.tweet-container');
+      const $tweetContainer = $('#tweet-container');
       tweets.forEach((tweet) => {
         const tweetElement = createTweetElement(tweet);
         $tweetContainer.append(tweetElement);
@@ -64,27 +64,35 @@ const data = [
   
   function createTweetElement(tweet) {
     const $tweet = $('<article>', { class: 'tweet' });  
-    const $header = $('<header>');
-    const $avatar = $('<img>', { class: 'userIcon' }).attr('src', tweet.user.avatars.small);
-    const $username = $('<span>', { class: 'username'}).text(tweet.user.name);
-    const $handle = $('<span>', { class: 'handle' }).text(tweet.user.handle);
-    $header.append($avatar, $username, $handle);
 
     const $tweetDiv = $('<div>');
     const $tweetText = $('<p>').text(tweet.content.text);
     $tweetDiv.append($tweetText);
 
+    $tweet.append(createTweetHeader(tweet.user), $tweetDiv, createTweetFooter(tweet.created_at));
+    return $tweet;
+  }
+
+  function createTweetHeader(user) {
+    const $header = $('<header>');
+    const $avatar = $('<img>', { class: 'userIcon' }).attr('src', user.avatars.small);
+    const $username = $('<span>', { class: 'username'}).text(user.name);
+    const $handle = $('<span>', { class: 'handle' }).text(user.handle);
+    $header.append($avatar, $username, $handle);
+    return $header;
+  }
+
+function createTweetFooter(timeCreated) {
     const $footer = $('<footer>');
-    const $timestamp = $('<span>').text(`${Math.floor((new Date()-tweet.created_at) / 86400000)} days`);
+    const $timestamp = $('<span>').text(`${Math.floor((new Date() - timeCreated) / 86400000)} days`);
     const $heart = $('<i>', { class: 'fas fa-heart fa-lg'});
     const $retweet = $('<i>', { class: 'fas fa-retweet fa-lg'});
     const $flag = $('<i>', { class: 'fas fa-flag fa-lg'});
     $footer.append($timestamp, $heart, $retweet, $flag);
+    return $footer;
+}
 
-    $tweet.append($header, $tweetDiv, $footer);
-    return $tweet;
-  }
-  $(document).ready(() => {
+  $(() => {
     renderTweets(data);
   })
   
