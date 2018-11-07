@@ -53,6 +53,7 @@ const data = [
 
 function renderTweets(tweets) {
     const $tweetContainer = $('#tweet-container');
+    $tweetContainer.empty();
     tweets.forEach((tweet) => {
       const tweetElement = createTweetElement(tweet);
       $tweetContainer.append(tweetElement);
@@ -92,24 +93,19 @@ function createTweetFooter(timeCreated) {
   return $footer;
 }
 
-$(() => {
-renderTweets(data);
-})
+// $(() => {
+// renderTweets(data);
+// })
 
 $(() => {
   $('#tweet-form').submit(function(event) {
     event.preventDefault();
     const tweetData = $(this).serialize();
-    $.post('/tweets', tweetData, () => console.log('success'));
+    $.post('/tweets/', tweetData, () => loadTweets());
   });
+  function loadTweets() {
+    $.get('/tweets/', (data) => renderTweets(data.reverse()));
+  }
+  loadTweets();
 })
 
-
-// $(function() {
-//   var $button = $('new-tweet input');
-//   $button.on('click', function() {
-//     $button.preventDefault();
-//     $.ajax('', { method: 'POST' })
-//     .then
-//   });
-// });
