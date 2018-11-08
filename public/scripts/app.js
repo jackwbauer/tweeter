@@ -86,26 +86,36 @@ function createTweetHeader(user) {
 function createTweetFooter(timeCreated) {
   const $footer = $('<footer>');
   const $timestamp = $('<span>').text(`${Math.floor((new Date() - timeCreated) / 86400000)} days`);
-  const $heart = $('<i>', { class: 'fas fa-heart fa-lg'});
-  const $retweet = $('<i>', { class: 'fas fa-retweet fa-lg'});
-  const $flag = $('<i>', { class: 'fas fa-flag fa-lg'});
+  const $heart = createIconElement('heart');
+  const $retweet = createIconElement('retweet');
+  const $flag = createIconElement('flag');
   $footer.append($timestamp, $heart, $retweet, $flag);
   return $footer;
 }
 
+function createIconElement(type) {
+  return $('<i>', {class: `fas fa-${type} fa-lg`});
+}
+
 $(() => {
   const $newTweetSection = $('section.new-tweet');
-  const $textInput = $newTweetSection.find('[name=text]');
+  const $textArea = $newTweetSection.find('textarea');
+  const $errorDiv = $newTweetSection.find('.error-div');
+  const $errorMessage = $newTweetSection.find('.error-message');
   $('#tweet-form').submit(function(event) {
     event.preventDefault();
-    const tweetData = $(this).serialize();
 
-    if(textInput.val() && textInput.val().length <= 140) {
-      $.post('/tweets/', tweetData, () => loadTweets());
-      textInput.val('');
+    if($textArea.val() && $textArea.val().length <= 140) {
+      const $textInput = $(this).serialize();
+      $.post('/tweets/', $textInput, () => loadTweets());
+      $textArea.val('');
+      $errorDiv.slideUp();
+      $errorMessage.text('');
       $(this).find('.counter').text(140);
     } else {
-      alert(textInput ? 'Too many characters!' : 'Nothing to tweet!');
+      const errorText = $textArea.val() ? 'Too many characters!' : 'Nothing to tweet!';
+      $errorDiv.slideDown();
+      $errorMessage.text(errorText);
     }
   });
   function loadTweets() {
@@ -113,7 +123,7 @@ $(() => {
   }
 
   $('#nav-bar .compose').on('click', function() {
-    $newTweetSection.slideToggle(() => $textInput.focus());
+    $newTweetSection.slideToggle(() => $textArea.focus());
   });
 
   loadTweets();

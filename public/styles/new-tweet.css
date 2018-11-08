@@ -32,3 +32,18 @@
 .new-tweet .invalid {
     color: red;
 }
+
+.new-tweet .error-div {
+    height: 2em;
+    width: 100%;
+    background-color: pink;
+    color: maroon;
+    padding: 0.5em;
+    /* border: 1px solid darkred; */
+    margin: 0.5em 0;
+    display: none;
+}
+
+.new-tweet .error-message {
+    padding: 1em;
+}
