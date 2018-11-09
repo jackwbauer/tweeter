@@ -1,0 +1,45 @@
+.new-tweet {
+    position: relative;
+    background-color: #eee;
+    border: 1px solid gray;
+    border-radius: 0.5em;
+    padding: 1em;
+    margin: 1em;
+    display: none;
+
+    h2 {
+        border-bottom: 0.1em solid black;
+        margin-top: 0;
+    }
+    
+    textarea {
+        width: 100%;
+        padding: 5px;
+        resize: vertical;
+        min-height: 5em;
+    }
+    
+    input {
+        margin-bottom: 1em;
+    }
+    
+    .counter {
+        margin-bottom: 1em;
+        float: right;
+    }
+    
+    .invalid {
+        color: red;
+    }
+    
+    .error-div {
+        height: 2em;
+        width: 100%;
+        background-color: pink;
+        color: maroon;
+        padding: 0.5em;
+        /* border: 1px solid darkred; */
+        margin: 0.5em 0;
+        display: none;
+    }
+}

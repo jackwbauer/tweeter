@@ -85,7 +85,7 @@ function createTweetHeader(user) {
 
 function createTweetFooter(timeCreated) {
   const $footer = $('<footer>');
-  const $timestamp = $('<span>').text(`${Math.floor((new Date() - timeCreated) / 86400000)} days`);
+  const $timestamp = $('<span>').text($.timeago(timeCreated));
   const $heart = createIconElement('heart');
   const $retweet = createIconElement('retweet');
   const $flag = createIconElement('flag');

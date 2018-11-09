@@ -1,0 +1,169 @@
+/*
+* http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+* https://css-tricks.com/international-box-sizing-awareness-day/
+* Do not modify these two selectors, please
+*/
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/*
+* Global layout stuff
+*/
+body {
+  align-content: center;
+  color: #244751;
+  background-color: #eee;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+main {
+  width: 450px;
+  background-color: white;
+  padding-top: 5em;
+  padding-bottom: 20px;
+  margin: 0 auto;
+}
+
+#nav-bar {
+  position: fixed;
+  top: 0;
+  padding-left: 2em;
+  height: 80px;
+  width: 100%;
+  background-color: #00A087;
+  color: #E8FDFF;
+  z-index: 1;
+}
+#nav-bar .logo {
+  height: 80px;
+  width: 80px;
+}
+#nav-bar .header {
+  padding-left: 10px;
+  font-size: 2rem;
+  line-height: 2.5;
+}
+#nav-bar .float {
+  float: left;
+}
+#nav-bar .compose {
+  float: right;
+  border: 1px solid #000;
+  border-radius: 0.25em;
+  padding: 0.5em;
+  margin: 0.5em 0.5em 0 0;
+  font-size: 1.5em;
+  background-color: #E8FDFF;
+  color: #00A087;
+  cursor: pointer;
+}
+#nav-bar .compose:hover {
+  background-color: #FFF;
+  color: #000;
+}
+
+.new-tweet {
+  position: relative;
+  background-color: #eee;
+  border: 1px solid gray;
+  border-radius: 0.5em;
+  padding: 1em;
+  margin: 1em;
+  display: none;
+}
+.new-tweet h2 {
+  border-bottom: 0.1em solid black;
+  margin-top: 0;
+}
+.new-tweet textarea {
+  width: 100%;
+  padding: 5px;
+  resize: vertical;
+  min-height: 5em;
+}
+.new-tweet input {
+  margin-bottom: 1em;
+}
+.new-tweet .counter {
+  margin-bottom: 1em;
+  float: right;
+}
+.new-tweet .invalid {
+  color: red;
+}
+.new-tweet .error-div {
+  height: 2em;
+  width: 100%;
+  background-color: pink;
+  color: maroon;
+  padding: 0.5em;
+  /* border: 1px solid darkred; */
+  margin: 0.5em 0;
+  display: none;
+}
+
+.tweet {
+  position: relative;
+  background-color: #FFF;
+  border: 1px solid lightgrey;
+  border-radius: 0.5em;
+  overflow: hidden;
+  margin: 1em;
+  opacity: 0.7;
+}
+.tweet :hover {
+  opacity: 1;
+  border-color: black;
+}
+.tweet :hover i {
+  visibility: visible;
+}
+.tweet .userIcon {
+  display: inline-block;
+  margin: 0.5em 0 0 0.5em;
+  width: 50px;
+  height: 50px;
+}
+.tweet .username {
+  position: absolute;
+  font-size: 24px;
+  font-weight: bold;
+  top: 0.5em;
+  left: 2.6em;
+}
+.tweet .handle {
+  float: right;
+  padding: 1em;
+}
+.tweet header {
+  background-color: #eee;
+}
+.tweet div {
+  vertical-align: middle;
+  height: 100px;
+  margin: 0.5em;
+}
+.tweet footer {
+  padding: 0.5em;
+  border-top: 1px solid gray;
+  font-size: 12px;
+}
+.tweet .hover {
+  border: 2px solid #000;
+}
+.tweet p {
+  word-break: break-all;
+}
+.tweet i {
+  color: mediumaquamarine;
+  float: right;
+  padding: 0.25em;
+  visibility: hidden;
+}
+
+/*# sourceMappingURL=styles.css.map */
