@@ -106,14 +106,19 @@ $(() => {
     event.preventDefault();
 
     if($textArea.val() && $textArea.val().length <= 140) {
+      console.log('here');
       const $textInput = $(this).serialize();
-      $.post('/tweets/', $textInput, () => loadTweets());
-      $textArea.val('');
-      $errorDiv.slideUp();
-      $errorMessage.text('');
-      $(this).find('.counter').text(140);
+      const $counter = $(this).find('.counter');
+      $.post('/tweets/', $textInput, () => {
+        loadTweets();
+        $textArea.val('');
+        $errorDiv.slideUp();
+        $errorMessage.text('');
+        $counter.text(140);
+      });
+
     } else {
-      const errorText = $textArea.val() ? 'Too many characters!' : 'Nothing to tweet!';
+      const errorText = $textArea.val() ? 'Exceeds maximum of 140 characters!' : 'Nothing to tweet!';
       $errorDiv.slideDown();
       $errorMessage.text(errorText);
     }
